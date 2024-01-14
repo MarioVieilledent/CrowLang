@@ -22,10 +22,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
 const constants_1 = require("./constants");
-const interpret_1 = require("./interpret");
+const interpret_1 = __importDefault(require("./interpret"));
 const pjson = require("../package.json");
 const command = process.argv[2];
 if (command === constants_1.COMMAND_RUN) {
@@ -34,7 +37,8 @@ if (command === constants_1.COMMAND_RUN) {
             console.error(err);
         }
         else {
-            (0, interpret_1.interpretFile)((0, interpret_1.shorten)(script));
+            const interpreter = new interpret_1.default(script);
+            interpreter.interpret();
         }
     });
 }

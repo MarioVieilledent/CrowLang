@@ -10,7 +10,7 @@ Then we interpret the script as a set of functions
 
 main = (): v => {
     print("test"); // test
-    5 + 4
+    5 + 4;
     res = add(4, 7); // res = 11
     print(add(res, 12)); // 23
 

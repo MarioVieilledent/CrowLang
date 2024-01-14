@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import { COMMAND_HELP, COMMAND_RUN, CROW_LANG } from "./constants";
-import { interpretFile, shorten } from "./interpret";
-
+import { interpretFile } from "./oldInterpret";
+import CrowInterpreter from "./interpret";
 const pjson = require("../package.json");
 
 const command = process.argv[2];
@@ -14,7 +14,8 @@ if (command === COMMAND_RUN) {
       if (err) {
         console.error(err);
       } else {
-        interpretFile(shorten(script));
+        const interpreter = new CrowInterpreter(script);
+        interpreter.interpret();
       }
     }
   );
