@@ -11,6 +11,8 @@ import {
 
 export type ScriptFunc = (script: string) => string;
 
+export type FunctionCollection = { [key: string]: Function };
+
 export interface FunctionDescription {
   script: string;
   name: string;
@@ -26,10 +28,12 @@ export interface Expression {
   clType: CLType;
 }
 
-export interface Variable {
+export interface Function {
   key: string;
+  parameters: any[];
   value: any;
   clType: CLType;
+  childFunctions: FunctionCollection;
 }
 
 export type CLType =

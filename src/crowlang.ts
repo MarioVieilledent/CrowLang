@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import { COMMAND_HELP, COMMAND_RUN, CROW_LANG } from "./constants";
-import { interpretFile } from "./oldInterpret";
 import CrowInterpreter from "./interpret";
 const pjson = require("../package.json");
 
