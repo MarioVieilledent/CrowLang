@@ -80,6 +80,7 @@ class CrowInterpreter {
                     (0, panic_1.panic)("triple nested function not allowed", currentLine);
                 }
                 level++;
+                continue;
             }
             // def = (param: s): v => void;
             // def = (): v => void;
@@ -97,6 +98,7 @@ class CrowInterpreter {
                 else {
                     (0, panic_1.panic)("triple nested function not allowed", currentLine);
                 }
+                continue;
             }
             // }
             if (tl >= 1 && tokens[0] === "}") {
@@ -107,7 +109,9 @@ class CrowInterpreter {
                     level--;
                     currentFunction.splice(-1);
                 }
+                continue;
             }
+            console.log(line);
         }
         console.log(this.heap.displayHeap());
     }
